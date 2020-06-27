@@ -59,4 +59,6 @@ python -m ipykernel install --user --name drlnd --display-name "drlnd"
 ### Instructions
 
 There are instructions in `Navigation.ipynb` that will show how to get started exploring a random agent in the library and
-for beginning to train our agent.  
+for beginning to train our agent. This notebook has cells which introduce and 
+setup the environment, provide details, and train an agent using Q-learning with
+a neural network.
