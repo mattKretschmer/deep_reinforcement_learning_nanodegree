@@ -32,11 +32,36 @@ The task is episodic, and in order to solve the environment, your agent must get
 
     (_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux_NoVis.zip) to obtain the environment.
 
-2. Place the file in the DRLND GitHub repository, in the `p1_navigation/` folder, and unzip (or decompress) the file. 
+2. Place the file in the DRLND GitHub repository, in the `p1_navigation/` folder, and unzip (or decompress) the file.
+3. Its recommended that you work within a virtual environment, and that you have created a ipython kernel that 
+allows jupyter to run in this environment.
+4. Create (and activate) a new virtual environment with Python 3.6. As an example, using 
+conda you might enter:
+	- __Linux__ or __Mac__: 
+	```bash
+	conda create --name drlnd python=3.6
+	source activate drlnd
+	```
+	- __Windows__: 
+	```bash
+	conda create --name drlnd python=3.6 
+	activate drlnd
+	```
+5. Install OpenAI gym, `pip install gym`
+	
+6. Create an [IPython kernel](http://ipython.readthedocs.io/en/stable/install/kernel_install.html) for the `drlnd` environment.  
+```bash
+python -m ipykernel install --user --name drlnd --display-name "drlnd"
+```
+6. Before opening the notebook and after cloning/completing the above steps, please install dependencies by entering
+`pip -q install ./python`.
 
 ### Instructions
 
-Follow the instructions in `Navigation.ipynb` to get started with training your own agent!  
+There are instructions in `Navigation.ipynb` that will show how to get started exploring a random agent in the library and
+for beginning to train our agent.  
+
+
 
 ### (Optional) Challenge: Learning from Pixels
 
