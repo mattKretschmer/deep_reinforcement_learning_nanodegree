@@ -44,6 +44,7 @@ class Agent():
         if PER:
             self.memory = PrioritizedReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, ALPHA, seed)
             self.learn_step = 0
+            self.beta = BETA
         else:
             self.memory = ReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, seed)
 
@@ -64,10 +65,8 @@ class Agent():
             # If enough samples are available in memory, get random subset and learn
             if len(self.memory) > BATCH_SIZE:
                 experiences = self.memory.sample()
-                if PER:
-                    self.learn(experiences, GAMMA, BETA)
-                else:
-                    self.learn(experiences, GAMMA)
+
+                self.learn(experiences, GAMMA)
 
     def act(self, state, eps=0.):
         """Returns actions for given state as per current policy.
@@ -89,7 +88,7 @@ class Agent():
         else:
             return random.choice(np.arange(self.action_size))
 
-    def learn(self, experiences, gamma, beta):
+    def learn(self, experiences, gamma):
         """Update value parameters using given batch of experience tuples.
 
         Params
@@ -98,7 +97,9 @@ class Agent():
             gamma (float): discount factor
         """
         if PER:
-            b = min(1.0, beta + self.learn_step * (1.0 - beta) / 25000)
+            # This is for controlling how sampling experiences is done.
+            # b controls if experiences are sampled unfoirmly or by priority.
+            b = min(1.0, self.beta + self.learn_step * (1.0 - self.beta) / 25000)
             self.learn_step += 1
 
             states, actions, rewards, next_states, probabilities, dones, indices = experiences
