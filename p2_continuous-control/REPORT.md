@@ -9,6 +9,10 @@ Deep Deterministic Policy Gradients to train an agent that can solve the continu
  policy, and a "critic" network, which helps evaluate the value of taking an action according
  to this critic network/policy in a given state, and following the deterministic policy into the future.
  
+ The parameters of the Q-network can be learned similar to DQN and Q-learning. The parameters of the 
+ actor/policy-network are learned by using the (local) Q-network effectively to define the loss. We want
+ to find the parameters of of the policy that maximize predicted future returns (Q-values!).
+ 
  We train and learn the parameters and weights of the neural networks approximating 
  a actor (policy network) and critic (value network) via stochastic gradient descent. We use the 
  Adam optimizer, with the learning rates for each network differing below. 
